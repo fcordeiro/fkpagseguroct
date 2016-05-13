@@ -230,6 +230,15 @@
                 <div class="form-group">
                     <label class="control-label fkpagseguroct-col-lg-25 fkpagseguroct-float-left"></label>
                     <div class="fkpagseguroct-float-left">
+                        <input type="checkbox" name="fkpagseguroct_bootstrap" id="fkpagseguroct_bootstrap" value="on" {if isset($tab_2['fkpagseguroct_bootstrap']) and $tab_2['fkpagseguroct_bootstrap'] == 'on'}checked="checked"{/if}>
+                    </div>
+                    <label class="fkpagseguroct-label-right fkpagseguroct-col-lg-auto">
+                        {l s="Permitir alterar status do pedido para pagamento aceito, mesmo quando não houver estoque" mod="fkpagseguroct"}
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="control-label fkpagseguroct-col-lg-25 fkpagseguroct-float-left"></label>
+                    <div class="fkpagseguroct-float-left">
                         <input type="checkbox" name="fkpagseguroct_status_canc" id="fkpagseguroct_status_canc" value="on" {if isset($tab_2['fkpagseguroct_status_canc']) and $tab_2['fkpagseguroct_status_canc'] == 'on'}checked="checked"{/if}>
                     </div>
                     <label class="fkpagseguroct-label-right fkpagseguroct-col-lg-auto">
