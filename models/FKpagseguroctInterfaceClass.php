@@ -385,13 +385,14 @@ class FKpagseguroctInterfaceClass {
         //***Se o status do PagSeguro é Pagamento Confirmado e o status atual do pedido é PagSeguro: aguardando pagamento
         //***Se o status do PagSeguro é Pagamento Confirmado e o status atual do pedido é Cancelado
         //***Se o status do PagSeguro é Pagamento Confirmado e o status atual do pedido é Sem Estoque
+        //***Se o status do PagSeguro é Pagamento Confirmado e o status atual é Sem Estoque (Não Pago)
         //***Se o status do PagSeguro é Cancelado e o status atual do pedido é PagSeguro: aguardando pagamento
         //***Se o status do PagSeguro é Cancelado e o status atual do pedido é Sem Estoque
         if (Configuration::get('FKPAGSEGUROCT_STATUS_PAGO') == 'on' and $cod_status == '3' And $statePedido['id_order_state'] == Configuration::get('FKPAGSEGUROCT_STATE_ORDER') Or
             Configuration::get('FKPAGSEGUROCT_STATUS_PAGO') == 'on' and $cod_status == '3' And $statePedido['id_order_state'] == 6 Or
-            Configuration::get('FKPAGSEGUROCT_STATUS_PAGO') == 'on' and $cod_status == '3' And $statePedido['id_order_state'] == 9 Or
+            Configuration::get('FKPAGSEGUROCT_STATUS_PAGO') == 'on' and Configuration::get('FKPAGSEGUROCT_ESTOQUE_ZERO') == 'on' and $cod_status == '3' And $statePedido['id_order_state'] == 9 Or
             Configuration::get('FKPAGSEGUROCT_STATUS_CANC') == 'on' and $cod_status == '7' And $statePedido['id_order_state'] == Configuration::get('FKPAGSEGUROCT_STATE_ORDER') Or
-            Configuration::get('FKPAGSEGUROCT_STATUS_CANC') == 'on' and $cod_status == '7' And $statePedido['id_order_state'] == 9) {
+            Configuration::get('FKPAGSEGUROCT_STATUS_CANC') == 'on' and Configuration::get('FKPAGSEGUROCT_ESTOQUE_ZERO') == 'on' and $cod_status == '7' And $statePedido['id_order_state'] == 9) {
         
             // Instancia Order
             $order = new Order((int)$statePedido['id_order']);
